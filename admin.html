@@ -1,0 +1,1416 @@
+<!DOCTYPE html>
+<html lang="ms">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>RSVP Admin Dashboard</title>
+
+<link rel="preconnect"
+      href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cormorant+Garamond:wght@400;500;600&display=swap"
+      rel="stylesheet">
+
+<style>
+
+:root {
+
+  --bg: #f5f0eb;
+  --card: #fffdfa;
+  --champagne: #ebdcd0;
+  --champagne-dark: #ccb7a5;
+  --burgundy: #7a202c;
+  --text: #3a3229;
+  --gold: #8c7355;
+
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+
+  min-height: 100vh;
+
+  background:
+    radial-gradient(
+      circle at top,
+      #fffaf6,
+      var(--bg)
+    );
+
+  font-family:
+    'Cormorant Garamond',
+    serif;
+
+  color: var(--text);
+
+  padding: 30px 15px;
+
+}
+
+
+/* LOGIN */
+
+.login-container {
+
+  width: 100%;
+  max-width: 400px;
+
+  margin: 100px auto;
+
+  background: var(--card);
+
+  padding: 40px 30px;
+
+  border: 1px solid var(--champagne-dark);
+
+  border-radius: 14px;
+
+  box-shadow:
+    0 15px 40px rgba(74,58,43,.1);
+
+  text-align: center;
+
+}
+
+.login-title {
+
+  font-family: 'Amiri', serif;
+
+  font-size: 2rem;
+
+  margin-bottom: 5px;
+
+}
+
+.login-subtitle {
+
+  color: var(--gold);
+
+  margin-bottom: 25px;
+
+}
+
+.password-input {
+
+  width: 100%;
+
+  padding: 12px;
+
+  border: none;
+
+  border-bottom:
+    1px solid var(--champagne-dark);
+
+  background: transparent;
+
+  font-family:
+    'Cormorant Garamond',
+    serif;
+
+  font-size: 1rem;
+
+  outline: none;
+
+  text-align: center;
+
+}
+
+.login-button {
+
+  width: 100%;
+
+  margin-top: 20px;
+
+  padding: 12px;
+
+  border: 1px solid var(--champagne-dark);
+
+  background: var(--bg);
+
+  color: var(--text);
+
+  cursor: pointer;
+
+  font-family:
+    'Cormorant Garamond',
+    serif;
+
+  letter-spacing: 2px;
+
+}
+
+.login-button:hover {
+
+  background: var(--champagne);
+
+}
+
+.login-error {
+
+  color: var(--burgundy);
+
+  margin-top: 15px;
+
+  display: none;
+
+}
+
+
+/* DASHBOARD */
+
+.dashboard {
+
+  display: none;
+
+  max-width: 1200px;
+
+  margin: auto;
+
+}
+
+.header {
+
+  text-align: center;
+
+  margin-bottom: 30px;
+
+}
+
+.header h1 {
+
+  font-family: 'Amiri', serif;
+
+  font-size: 2.5rem;
+
+}
+
+.header p {
+
+  color: var(--gold);
+
+}
+
+
+/* STATS */
+
+.stats-grid {
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, 1fr);
+
+  gap: 15px;
+
+  margin-bottom: 15px;
+
+}
+
+.stat-card {
+
+  background: var(--card);
+
+  border:
+    1px solid var(--champagne-dark);
+
+  border-radius: 12px;
+
+  padding: 20px;
+
+  text-align: center;
+
+}
+
+.stat-title {
+
+  font-size: .8rem;
+
+  letter-spacing: 1.5px;
+
+  text-transform: uppercase;
+
+  color: var(--gold);
+
+}
+
+.stat-number {
+
+  font-size: 2rem;
+
+  font-weight: 600;
+
+  margin-top: 5px;
+
+  color: var(--burgundy);
+
+}
+
+
+/* FILTER STATS */
+
+.side-grid {
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, 1fr);
+
+  gap: 15px;
+
+  margin-bottom: 25px;
+
+}
+
+.side-card {
+
+  background: rgba(255,253,250,.7);
+
+  border:
+    1px solid var(--champagne);
+
+  padding: 15px;
+
+  text-align: center;
+
+  border-radius: 10px;
+
+}
+
+.side-name {
+
+  font-size: .8rem;
+
+  color: var(--gold);
+
+}
+
+.side-number {
+
+  font-size: 1.5rem;
+
+  font-weight: 600;
+
+}
+
+
+/* CONTROLS */
+
+.controls {
+
+  background: var(--card);
+
+  padding: 20px;
+
+  border:
+    1px solid var(--champagne-dark);
+
+  border-radius: 12px;
+
+  margin-bottom: 20px;
+
+  display: flex;
+
+  gap: 10px;
+
+  flex-wrap: wrap;
+
+}
+
+.search {
+
+  flex: 1;
+
+  min-width: 200px;
+
+  padding: 10px;
+
+  border:
+    1px solid var(--champagne-dark);
+
+  background: white;
+
+  font-family:
+    'Cormorant Garamond',
+    serif;
+
+  font-size: 1rem;
+
+}
+
+.filter {
+
+  padding: 10px;
+
+  border:
+    1px solid var(--champagne-dark);
+
+  background: white;
+
+  font-family:
+    'Cormorant Garamond',
+    serif;
+
+}
+
+.refresh-button,
+.logout-button {
+
+  padding: 10px 18px;
+
+  border:
+    1px solid var(--champagne-dark);
+
+  background: var(--bg);
+
+  cursor: pointer;
+
+  font-family:
+    'Cormorant Garamond',
+    serif;
+
+}
+
+.refresh-button:hover {
+
+  background: var(--champagne);
+
+}
+
+
+/* TABLE */
+
+.table-container {
+
+  background: var(--card);
+
+  border:
+    1px solid var(--champagne-dark);
+
+  border-radius: 12px;
+
+  overflow-x: auto;
+
+}
+
+table {
+
+  width: 100%;
+
+  border-collapse: collapse;
+
+  min-width: 700px;
+
+}
+
+th {
+
+  background: var(--champagne);
+
+  padding: 14px;
+
+  text-align: left;
+
+  font-size: .85rem;
+
+  letter-spacing: 1px;
+
+  text-transform: uppercase;
+
+}
+
+td {
+
+  padding: 14px;
+
+  border-bottom:
+    1px solid #eee5dd;
+
+}
+
+tr:hover td {
+
+  background: #fffaf6;
+
+}
+
+
+/* BADGES */
+
+.badge {
+
+  display: inline-block;
+
+  padding: 4px 9px;
+
+  border-radius: 20px;
+
+  font-size: .8rem;
+
+}
+
+.hadir {
+
+  background: #e8f1e8;
+
+  color: #38613b;
+
+}
+
+.tidak-hadir {
+
+  background: #f5e4e4;
+
+  color: var(--burgundy);
+
+}
+
+
+/* MOBILE */
+
+@media(max-width: 700px) {
+
+  body {
+    padding: 15px 10px;
+  }
+
+  .stats-grid {
+
+    grid-template-columns:
+      repeat(2, 1fr);
+
+  }
+
+  .side-grid {
+
+    grid-template-columns:
+      repeat(2, 1fr);
+
+  }
+
+  .header h1 {
+
+    font-size: 2rem;
+
+  }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- LOGIN -->
+
+<div id="loginContainer"
+     class="login-container">
+
+  <h1 class="login-title">
+    RSVP Admin
+  </h1>
+
+  <p class="login-subtitle">
+    Masukkan password untuk akses dashboard
+  </p>
+
+  <input
+    type="password"
+    id="passwordInput"
+    class="password-input"
+    placeholder="Password"
+  >
+
+  <button
+    class="login-button"
+    onclick="login()">
+
+    LOGIN
+
+  </button>
+
+  <p
+    id="loginError"
+    class="login-error">
+
+    Password salah.
+
+  </p>
+
+</div>
+
+
+
+<!-- DASHBOARD -->
+
+<div
+  id="dashboard"
+  class="dashboard">
+
+
+  <div class="header">
+
+    <h1>
+      RSVP Dashboard
+    </h1>
+
+    <p>
+      Senarai Kehadiran Tetamu
+    </p>
+
+  </div>
+
+
+
+  <!-- MAIN STATS -->
+
+  <div class="stats-grid">
+
+
+    <div class="stat-card">
+
+      <div class="stat-title">
+        Jumlah RSVP
+      </div>
+
+      <div
+        class="stat-number"
+        id="totalRSVP">
+
+        0
+
+      </div>
+
+    </div>
+
+
+    <div class="stat-card">
+
+      <div class="stat-title">
+        Hadir
+      </div>
+
+      <div
+        class="stat-number"
+        id="totalHadir">
+
+        0
+
+      </div>
+
+    </div>
+
+
+    <div class="stat-card">
+
+      <div class="stat-title">
+        Tidak Hadir
+      </div>
+
+      <div
+        class="stat-number"
+        id="totalTidakHadir">
+
+        0
+
+      </div>
+
+    </div>
+
+
+    <div class="stat-card">
+
+      <div class="stat-title">
+        Jumlah Tetamu
+      </div>
+
+      <div
+        class="stat-number"
+        id="totalGuests">
+
+        0
+
+      </div>
+
+    </div>
+
+
+  </div>
+
+
+
+  <!-- SIDE STATS -->
+
+  <div class="side-grid">
+
+
+    <div class="side-card">
+
+      <div class="side-name">
+        Keluarga Lelaki
+      </div>
+
+      <div
+        class="side-number"
+        id="lelakiCount">
+
+        0
+
+      </div>
+
+    </div>
+
+
+    <div class="side-card">
+
+      <div class="side-name">
+        Keluarga Perempuan
+      </div>
+
+      <div
+        class="side-number"
+        id="perempuanCount">
+
+        0
+
+      </div>
+
+    </div>
+
+
+    <div class="side-card">
+
+      <div class="side-name">
+        Rakan Lelaki
+      </div>
+
+      <div
+        class="side-number"
+        id="kawanLelakiCount">
+
+        0
+
+      </div>
+
+    </div>
+
+
+    <div class="side-card">
+
+      <div class="side-name">
+        Rakan Perempuan
+      </div>
+
+      <div
+        class="side-number"
+        id="kawanPerempuanCount">
+
+        0
+
+      </div>
+
+    </div>
+
+
+  </div>
+
+
+
+  <!-- CONTROLS -->
+
+  <div class="controls">
+
+
+    <input
+      type="text"
+      id="searchInput"
+      class="search"
+      placeholder="Cari nama..."
+    >
+
+
+    <select
+      id="sideFilter"
+      class="filter">
+
+      <option value="all">
+        Semua Pihak
+      </option>
+
+      <option value="Pihak Lelaki">
+        Pihak Lelaki
+      </option>
+
+      <option value="Pihak Perempuan">
+        Pihak Perempuan
+      </option>
+
+      <option value="Kawan Lelaki">
+        Kawan Lelaki
+      </option>
+
+      <option value="Kawan Perempuan">
+        Kawan Perempuan
+      </option>
+
+    </select>
+
+
+    <select
+      id="attendanceFilter"
+      class="filter">
+
+      <option value="all">
+        Semua Kehadiran
+      </option>
+
+      <option value="Hadir">
+        Hadir
+      </option>
+
+      <option value="Tidak Hadir">
+        Tidak Hadir
+      </option>
+
+    </select>
+
+
+    <button
+      class="refresh-button"
+      onclick="loadRSVP()">
+
+      ↻ Refresh
+
+    </button>
+
+
+    <button
+      class="logout-button"
+      onclick="logout()">
+
+      Logout
+
+    </button>
+
+
+  </div>
+
+
+
+  <!-- TABLE -->
+
+  <div class="table-container">
+
+    <table>
+
+      <thead>
+
+        <tr>
+
+          <th>#</th>
+
+          <th>Nama Penuh</th>
+
+          <th>Bilangan</th>
+
+          <th>Pihak</th>
+
+          <th>Kehadiran</th>
+
+          <th>Tarikh RSVP</th>
+
+        </tr>
+
+      </thead>
+
+
+      <tbody id="rsvpTable">
+
+      </tbody>
+
+    </table>
+
+  </div>
+
+
+</div>
+
+
+
+<script>
+
+
+/* SUPABASE */
+
+const SUPABASE_URL =
+  "https://yuiffmlrarohayebgimh.supabase.co";
+
+const SUPABASE_KEY =
+  "sb_publishable_p0BmgNgJKHos7X4rb-LPzQ_bIeLIkBm";
+
+
+/* ADMIN PASSWORD */
+
+const ADMIN_PASSWORD =
+  "admin123";
+
+
+/* DATA */
+
+let allRSVP = [];
+
+
+
+/* LOGIN */
+
+function login() {
+
+  const password =
+    document.getElementById(
+      "passwordInput"
+    ).value;
+
+  if (password === ADMIN_PASSWORD) {
+
+    localStorage.setItem(
+      "rsvpAdminLoggedIn",
+      "true"
+    );
+
+    document.getElementById(
+      "loginContainer"
+    ).style.display = "none";
+
+    document.getElementById(
+      "dashboard"
+    ).style.display = "block";
+
+    loadRSVP();
+
+  } else {
+
+    document.getElementById(
+      "loginError"
+    ).style.display = "block";
+
+  }
+
+}
+
+
+
+/* ENTER KEY LOGIN */
+
+document
+  .getElementById("passwordInput")
+  .addEventListener(
+    "keydown",
+    function(e) {
+
+      if (e.key === "Enter") {
+
+        login();
+
+      }
+
+    }
+  );
+
+
+
+/* LOGOUT */
+
+function logout() {
+
+  localStorage.removeItem(
+    "rsvpAdminLoggedIn"
+  );
+
+  location.reload();
+
+}
+
+
+
+/* LOAD RSVP */
+
+async function loadRSVP() {
+
+  try {
+
+    const response =
+      await fetch(
+        `${SUPABASE_URL}/rest/v1/rsvp?select=*&order=created_at.desc`,
+        {
+
+          headers: {
+
+            "apikey":
+              SUPABASE_KEY,
+
+            "Authorization":
+              `Bearer ${SUPABASE_KEY}`
+
+          }
+
+        }
+      );
+
+
+    if (!response.ok) {
+
+      const error =
+        await response.text();
+
+      console.error(error);
+
+      throw new Error(error);
+
+    }
+
+
+    allRSVP =
+      await response.json();
+
+
+    updateStats();
+
+    renderTable();
+
+
+  } catch(error) {
+
+    console.error(
+      "Failed to load RSVP:",
+      error
+    );
+
+    alert(
+      "Tak dapat ambil data RSVP dari Supabase."
+    );
+
+  }
+
+}
+
+
+
+/* UPDATE STATS */
+
+function updateStats() {
+
+  const total =
+    allRSVP.length;
+
+
+  const hadir =
+    allRSVP.filter(
+      item =>
+        item.attendance === "Hadir"
+    ).length;
+
+
+  const tidakHadir =
+    allRSVP.filter(
+      item =>
+        item.attendance === "Tidak Hadir"
+    ).length;
+
+
+  /*
+    Jumlah tetamu hanya kira
+    orang yang HADIR
+  */
+
+  const totalGuests =
+    allRSVP
+      .filter(
+        item =>
+          item.attendance === "Hadir"
+      )
+      .reduce(
+        (sum, item) =>
+          sum +
+          Number(item.guest_count || 0),
+        0
+      );
+
+
+  document.getElementById(
+    "totalRSVP"
+  ).textContent = total;
+
+
+  document.getElementById(
+    "totalHadir"
+  ).textContent = hadir;
+
+
+  document.getElementById(
+    "totalTidakHadir"
+  ).textContent = tidakHadir;
+
+
+  document.getElementById(
+    "totalGuests"
+  ).textContent = totalGuests;
+
+
+  /* Pihak Lelaki */
+
+  document.getElementById(
+    "lelakiCount"
+  ).textContent =
+    allRSVP
+      .filter(
+        item =>
+          item.side === "Pihak Lelaki" &&
+          item.attendance === "Hadir"
+      )
+      .reduce(
+        (sum, item) =>
+          sum +
+          Number(item.guest_count || 0),
+        0
+      );
+
+
+  /* Pihak Perempuan */
+
+  document.getElementById(
+    "perempuanCount"
+  ).textContent =
+    allRSVP
+      .filter(
+        item =>
+          item.side === "Pihak Perempuan" &&
+          item.attendance === "Hadir"
+      )
+      .reduce(
+        (sum, item) =>
+          sum +
+          Number(item.guest_count || 0),
+        0
+      );
+
+
+  /* Rakan Lelaki */
+
+  document.getElementById(
+    "kawanLelakiCount"
+  ).textContent =
+    allRSVP
+      .filter(
+        item =>
+          item.side === "Kawan Lelaki" &&
+          item.attendance === "Hadir"
+      )
+      .reduce(
+        (sum, item) =>
+          sum +
+          Number(item.guest_count || 0),
+        0
+      );
+
+
+  /* Rakan Perempuan */
+
+  document.getElementById(
+    "kawanPerempuanCount"
+  ).textContent =
+    allRSVP
+      .filter(
+        item =>
+          item.side === "Kawan Perempuan" &&
+          item.attendance === "Hadir"
+      )
+      .reduce(
+        (sum, item) =>
+          sum +
+          Number(item.guest_count || 0),
+        0
+      );
+
+}
+
+
+
+/* RENDER TABLE */
+
+function renderTable() {
+
+  const search =
+    document
+      .getElementById("searchInput")
+      .value
+      .toLowerCase();
+
+
+  const side =
+    document
+      .getElementById("sideFilter")
+      .value;
+
+
+  const attendance =
+    document
+      .getElementById("attendanceFilter")
+      .value;
+
+
+  const filtered =
+    allRSVP.filter(item => {
+
+
+      const matchName =
+        item.full_name
+          .toLowerCase()
+          .includes(search);
+
+
+      const matchSide =
+        side === "all" ||
+        item.side === side;
+
+
+      const matchAttendance =
+        attendance === "all" ||
+        item.attendance === attendance;
+
+
+      return (
+        matchName &&
+        matchSide &&
+        matchAttendance
+      );
+
+    });
+
+
+  const table =
+    document.getElementById(
+      "rsvpTable"
+    );
+
+
+  table.innerHTML = "";
+
+
+  if (filtered.length === 0) {
+
+    table.innerHTML = `
+
+      <tr>
+
+        <td
+          colspan="6"
+          style="
+            text-align:center;
+            padding:30px;
+          "
+        >
+
+          Tiada RSVP dijumpai.
+
+        </td>
+
+      </tr>
+
+    `;
+
+    return;
+
+  }
+
+
+  filtered.forEach(
+    (item, index) => {
+
+      const date =
+        item.created_at
+          ? new Date(
+              item.created_at
+            ).toLocaleString(
+              "ms-MY",
+              {
+                dateStyle:
+                  "medium",
+                timeStyle:
+                  "short"
+              }
+            )
+          : "-";
+
+
+      const attendanceClass =
+        item.attendance === "Hadir"
+          ? "hadir"
+          : "tidak-hadir";
+
+
+      table.innerHTML += `
+
+        <tr>
+
+          <td>
+            ${index + 1}
+          </td>
+
+          <td>
+            <strong>
+              ${escapeHTML(
+                item.full_name
+              )}
+            </strong>
+          </td>
+
+          <td>
+            ${item.guest_count}
+          </td>
+
+          <td>
+            ${escapeHTML(
+              item.side
+            )}
+          </td>
+
+          <td>
+
+            <span
+              class="badge
+              ${attendanceClass}"
+            >
+
+              ${escapeHTML(
+                item.attendance
+              )}
+
+            </span>
+
+          </td>
+
+          <td>
+            ${date}
+          </td>
+
+        </tr>
+
+      `;
+
+    }
+  );
+
+}
+
+
+
+/* ESCAPE HTML */
+
+function escapeHTML(text) {
+
+  const div =
+    document.createElement(
+      "div"
+    );
+
+  div.textContent =
+    text ?? "";
+
+  return div.innerHTML;
+
+}
+
+
+
+/* FILTER EVENTS */
+
+document
+  .getElementById("searchInput")
+  .addEventListener(
+    "input",
+    renderTable
+  );
+
+
+document
+  .getElementById("sideFilter")
+  .addEventListener(
+    "change",
+    renderTable
+  );
+
+
+document
+  .getElementById("attendanceFilter")
+  .addEventListener(
+    "change",
+    renderTable
+  );
+
+
+
+/* AUTO LOGIN */
+
+if (
+  localStorage.getItem(
+    "rsvpAdminLoggedIn"
+  ) === "true"
+) {
+
+  document.getElementById(
+    "loginContainer"
+  ).style.display = "none";
+
+  document.getElementById(
+    "dashboard"
+  ).style.display = "block";
+
+  loadRSVP();
+
+}
+
+
+
+/* AUTO REFRESH
+   every 5 seconds
+*/
+
+setInterval(
+  function() {
+
+    if (
+      localStorage.getItem(
+        "rsvpAdminLoggedIn"
+      ) === "true"
+    ) {
+
+      loadRSVP();
+
+    }
+
+  },
+  5000
+);
+
+
+</script>
+
+
+</body>
+</html>

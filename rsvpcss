@@ -1,0 +1,24 @@
+/* Styling hiasan bunga di bucu atas kanan */
+.corner-flower-top {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  width: 90px; /* Pelaras saiz bunga mengikut kesesuaian */
+  height: auto;
+  pointer-events: none;
+  z-index: 10;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+}
+
+/* Styling hiasan bunga di bucu bawah kiri (opsional) */
+.corner-flower-bottom {
+  position: absolute;
+  bottom: -10px;
+  left: -10px;
+  width: 90px;
+  height: auto;
+  pointer-events: none;
+  z-index: 10;
+  transform: rotate(180deg); /* Putarkan bunga supaya muat di bucu bawah */
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+}
