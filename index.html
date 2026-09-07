@@ -399,68 +399,15 @@
       filter: drop-shadow(0 2px 3px rgba(122, 130, 74, 0.15));
     }
 
-    /* SECTION 2: INVITATION CARD CONTENT */
-    .bismillah {
-      font-family: 'Amiri', serif;
-      font-size: 1.6rem;
-      line-height: 1.3;
-      color: var(--text-gold);
-      margin-bottom: 10px;
-    }
-
-    .salam-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 0.8rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: #6b5744;
-      margin-bottom: 12px;
-      font-weight: 600;
-    }
-
-    .invite-text {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 0.9rem;
-      line-height: 1.5;
-      color: #5a5047;
-      margin-bottom: 15px;
-      font-weight: 400;
-    }
-
-    .guest-title {
-      display: block;
-      font-style: italic;
-      font-weight: 600;
-      color: var(--text-dark);
-      margin: 4px 0;
-      letter-spacing: 0.5px;
-    }
-
-    .groom-name, .bride-name {
-      font-family: 'Alex Brush', cursive;
-      font-size: 2.7rem;
-      color: #2b231d;
-      font-weight: normal;
-      line-height: 1.1;
-      margin: 2px 0;
-    }
-
-    .couple-divider {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 0.85rem;
-      font-style: italic;
-      color: var(--text-gold);
-      margin: 6px 0;
-      letter-spacing: 1px;
-    }
-
-    .thank-text {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 0.88rem;
-      line-height: 1.5;
-      color: #5a5047;
-      margin-top: 15px;
-      font-weight: 400;
+    /* SECTION 2: IMAGE SECTION STYLING */
+    .section-image {
+      max-width: 100%;
+      max-height: 85vh;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
     }
 
     /* SECTION 3: VENUE & COUNTDOWN CARD CONTENT */
@@ -890,53 +837,9 @@
       </div>
     </section>
 
-    <!-- PAGE 2: ASSALAMUALAIKUM / INVITATION TEXT CARD -->
+    <!-- PAGE 2: INVITATION IMAGE ONLY -->
     <section class="page-section">
-      <div class="invitation-card-container">
-        <svg class="floral-accent" viewBox="0 0 50 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M35 0 C35 30, 42 60, 40 100" stroke="#7a824a" stroke-width="2" fill="none"/>
-          <path d="M25 0 C25 25, 20 50, 22 80" stroke="#8b9452" stroke-width="1.5" fill="none"/>
-          <circle cx="40" cy="30" r="4" fill="#8b9452"/>
-          <circle cx="37" cy="45" r="5" fill="#7a824a"/>
-          <circle cx="42" cy="60" r="4.5" fill="#68703d"/>
-          <circle cx="39" cy="75" r="4" fill="#8b9452"/>
-          <circle cx="41" cy="90" r="3" fill="#7a824a"/>
-          <circle cx="22" cy="20" r="3.5" fill="#7a824a"/>
-          <circle cx="20" cy="35" r="4" fill="#68703d"/>
-          <circle cx="23" cy="50" r="4.5" fill="#8b9452"/>
-          <circle cx="21" cy="65" r="3.5" fill="#7a824a"/>
-        </svg>
-        <svg class="bg-flower-sketch" viewBox="0 0 100 200" fill="none" stroke="#7a7067" stroke-width="1" xmlns="http://www.w3.org/2000/svg">
-          <path d="M 20 190 Q 30 110 70 30" />
-          <path d="M 40 140 Q 15 120 10 90 C 10 70 30 70 40 95" />
-          <path d="M 50 100 Q 85 80 80 50 C 75 30 55 45 50 70" />
-          <ellipse cx="70" cy="30" rx="15" ry="25" transform="rotate(-15 70 30)" />
-          <ellipse cx="30" cy="90" rx="10" ry="18" transform="rotate(20 30 90)" />
-        </svg>
-
-        <div class="bismillah">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</div>
-        
-        <p class="salam-title">
-          ASSALAMUALAIKUM WARAHMATULLAHI WABARAKATUH
-        </p>
-
-        <p class="invite-text">
-          Dengan penuh rasa kesyukuran ke hadrat Allah SWT, kami seisi keluarga dengan segala hormat dan sukacitanya kami menjemput<br>
-          <span class="guest-title">Dato’ / Datin / Tuan / Puan / Encik / Cik</span>
-          ke majlis meraikan anakanda putera kami
-        </p>
-
-        <h1 class="groom-name">Nama Lelaki</h1>
-        
-        <p class="couple-divider">bersama pasangan pilihan hati</p>
-        
-        <h1 class="bride-name">Nama Perempuan</h1>
-
-        <p class="thank-text">
-          Kehadiran serta doa restu daripada pihak Dato’/Datin/Tuan/Puan/Encik/Cik amatlah kami hargai dan dahului dengan ucapan setinggi-tinggi terima kasih.<br><br>
-          Semoga dengan kehadiran para tetamu sekalian, bertambah seri dan berkat majlis yang diraikan.
-        </p>
-      </div>
+      <img src="assets/testing 1.jpg" alt="Invitation Card" class="section-image">
     </section>
 
     <!-- PAGE 3: THE GLASS TREE / VENUE CARD -->
